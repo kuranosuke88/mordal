@@ -13,8 +13,20 @@
 ActiveRecord::Schema.define(version: 20200323114822) do
 
   create_table "lessons", force: :cascade do |t|
+    t.date "meeting_on", null: false
+    t.time "started_at", null: false
+    t.time "finished_at", null: false
+    t.text "note"
+    t.string "target"
+    t.integer "seats_zoom"
+    t.integer "seats_real"
+    t.boolean "off_day", default: false, null: false
+    t.boolean "rescheduled", default: false, null: false
+    t.boolean "regular", default: true, null: false
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_lessons_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
