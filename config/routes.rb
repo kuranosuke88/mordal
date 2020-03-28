@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-
-  get 'attendances/edit'
-
   get '/attendances/lesson_detail/:lesson_id' ,to: 'attendances#lesson_detail'
   get 'lessons/weeklyschedule'
   post 'lessons/create', to: 'lessons#create'
-  post 'reservations/useredit', to: 'reservations#useredit'
-  get 'reservations/useredit', to: 'reservations#useredit'
-  post 'reservations/userupdate', to: 'reservations#userupdate'
+  post 'reservationusers/useredit', to: 'reservationusers#useredit'
+  get 'reservationusers/useredit', to: 'reservationusers#useredit'
+  post 'reservationusers/userupdate', to: 'reservationusers#userupdate'
+  post 'reservationusers/reservation_change_user', to: 'reservationusers#reservation_change_user'
+  post 'reservationusers/reservationnewuser', to: 'reservationusers#reservationnewuser'
+  post 'reservationusers/reservationnewusercreate', to: 'reservationusers#reservationnewusercreate'
   get 'sessions/new'
 
   root 'static_pages#top'
@@ -32,4 +32,5 @@ Rails.application.routes.draw do
   end
   resources :notices
   resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :reservations
 end
